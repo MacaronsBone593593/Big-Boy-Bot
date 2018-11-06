@@ -1,0 +1,21 @@
+{
+  "name": "Start",
+  "description": "Start",
+  "version": "0.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "discord.js": "11.1.0",
+    "request": "2.81.0",
+    "moment": "2.22.2",
+    "ytdl-core": "0.27.1",
+    "fs": ""0.0.1-security",
+    "dotenv": "6.1.0",
+    "get-youtube-id": "1.0.0",
+    "youtube-info": "1.3.2",
+    "ms": "2.1.1",
+    
+  }
+}
