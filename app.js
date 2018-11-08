@@ -636,7 +636,7 @@ client.on("message", async message => {
 
 client.on('message', message => {
 	if (message.channel.type == "dm") return console.log("User tried to insult me in DM's");
-    const swearWords = ["nigga","nigger","faggot","cracker","spic","dyke","hail hitler","cunt","queer","motherfucker","mother fucker","spick","jigaboo","chink","ching chong","chingchong"," hitler is the best","wop","fag","kraut"];
+    const swearWords = ["nigga","nigger","faggot","cracker","dyke","hail hitler","cunt","queer","spick","jigaboo","chink","ching chong","chingchong"," hitler is the best","wop","fag"];
     if (swearWords.some(word => message.content.includes(word))) {
         message.delete();
         message.channel.send(`Hey ${message.author}! That word has been banned, please don't use it!`).then(m => m.delete(10000)); // This function will tell the user off for using the filtered words, and then the message which telsl the user off will be deleted after 3 seconds. If you would like to extend the time, feel free to change it but take note that it's measured in milliseconds. If you don't want the bot to remove the warning message, take off the ".then(m => m.delete(3000))" bit!
