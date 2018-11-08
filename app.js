@@ -177,6 +177,7 @@ client.on('message', message => {
 
     message.channel.send(botembed);
   }
+	});
 
 const credentials = require("./credentials");
 
