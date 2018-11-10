@@ -18,6 +18,19 @@ const youtubeAPIKey = process.env.YOUTUBE_API_KEY;
 
 let guilds = {};
 
+var anti_spam = require("discord-anti-spam");
+ 
+antispam(client, {
+  warnBuffer: 8, //Maximum amount of messages allowed to send in the interval time before getting warned. 
+  maxBuffer: 15, // Maximum amount of messages allowed to send in the interval time before getting banned. 
+  interval: 5000, // Amount of time in ms users can send a maximum of the maxBuffer variable before getting banned. 
+  warningMessage: "stop spamming or I'll whack your head off.", // Warning message send to the user indicating they are going to fast. 
+  banMessage: "has been banned for spamming, anyone else?", // Ban message, always tags the banned user in front of it. 
+  maxDuplicatesWarning = 10, // Maximum amount of duplicate messages a user can send in a timespan before getting warned 
+  maxDuplicatesBan = 15 // Maximum amount of duplicate messages a user can send in a timespan before getting banned 
+  exemptRoles: ["Administrators", "Moderators", "Community Leader"] // The names of the roles which should not be spam-filtered
+});
+
 
 client.on('ready', () => {
     console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
