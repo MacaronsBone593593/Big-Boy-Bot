@@ -1,5 +1,5 @@
 const Discord = require("discord.js"); // Discord Module Required
-exports.run = async (client, message, args) => { // if your cmd handler has different things than client, message etc change it
+module.exports.run = async (client, message, args) => { // if your cmd handler has different things than client, message etc change it
 
   let logs = message.guild.channels.find("name", "bot-log-channel");
   if(!logs) return message.channel.send("Could not find a logs channel.");
@@ -28,6 +28,6 @@ exports.run = async (client, message, args) => { // if your cmd handler has diff
   logs.send(logsEmbed);
   message.channel.send(logsEmbed)
 }
-exports.help = {
+module.exports.help = {
   name: "ban"
 };
