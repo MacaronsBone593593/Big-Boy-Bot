@@ -1,33 +1,33 @@
-const Discord = require("discord.js"); // Discord Module Required
-module.exports.run = async (client, message, args) => { // if your cmd handler has different things than client, message etc change it
+const Discord = require("discord.js");
 
-  let logs = message.guild.channels.find("name", "bot-log-channel");
-  if(!logs) return message.channel.send("Could not find a logs channel.");
+module.exports.run = async (client, message, args) => {
 
-  let user = message.mentions.users.first();
-  if(!user) return message.reply("Please mention a user");
+    let bUser = message.guild.member(message.mentions.users.first() || message.guild.get(args[0]));
+    if (!bUser) return message.channel.send("Could not find user!")
+    let breason = args.join(" ").slice(22);
+    if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("You do not have the permission to use this command");
+    if (bUser.hasPermission("BAN_MEMBERS")) return message.channel.send("I cannot ban them.");
 
-  let reason = args.join(" ");
-  if(!reason) reason = "No reason given";
-  if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("You do not have the perms to execute this command.");
-  if (user.hasPermission("BAN_MEMBERS")) return message.channel.send("Hmm ... I can not ban them");
+    let banEmbed = new Discord.RichEmbed()
+        .setTitle("User Banned")
+        .setFooter("User Ban Logs")
+        .setColor("#ff0000")
+        .setTimestamp()
+        .addField("Banned User:", `${bUser}, ID: ${bUser.id}`, true)
+        .addField("Reason:", breason, true)
+        .addField("Moderator:", `${message.author}, ID: ${message.author.id}`, true)
+        .addField("Time:", message.createdAt, true)
+        .addField("Channel:", message.channel, true)
 
-  message.guild.member(user).ban(reason);
+    let banchannel = message.guild.channels.find(`name`, "bot-log-channel");
+    if (!banchannel) return message.channel.send("I can not find a channel to send reports");
 
-  let logsEmbed = new Discord.RichEmbed() // Master is MessageEmbed
-  .setTitle("User Banned")
-  .setFooter("User Ban Logs")
-  .setColor("#ff0000")
-  .setTimestamp()
-  .addField("Banned User:", `${user}, ID: ${user.id}`, true)
-  .addField("Reason:", reason, true)
-  .addField("Banned by:", `${message.author}, ID: ${message.author.id}`, true)
-  .addField("Time:", message.createdAt, true)
-  .addField("Channel:", message.channel, true)
+    message.guild.member(bUser).ban(breason);
+    message.delete();
+    banchannel.send(banEmbed);
+    message.channel.send(banEmbed);
 
-  logs.send(logsEmbed);
-  message.channel.send(logsEmbed)
 }
 module.exports.help = {
-  name: "ban"
-};
+    name: "ban"
+}
