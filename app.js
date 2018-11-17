@@ -18,18 +18,6 @@ const youtubeAPIKey = process.env.YOUTUBE_API_KEY;
 
 let guilds = {};
 
-var anti_spam = require("discord-anti-spam");
- 
-anti_spam(client, {
-  warnBuffer: 3, //Maximum amount of messages allowed to send in the interval time before getting warned. 
-  maxBuffer: 5, // Maximum amount of messages allowed to send in the interval time before getting banned. 
-  interval: 1000, // Amount of time in ms users can send a maximum of the maxBuffer variable before getting banned. 
-  warningMessage: "stop spamming or I'll whack your head off.", // Warning message send to the user indicating they are going to fast. 
-  banMessage: "has been banned for spamming, anyone else?", // Ban message, always tags the banned user in front of it. 
-  maxDuplicatesWarning = 7, // Maximum amount of duplicate messages a user can send in a timespan before getting warned 
-  maxDuplicatesBan = 10 // Maximum amount of duplicate messages a user can send in a timespan before getting banned 
-  exemptRoles: ["Administrators", "Moderators", "Community Leader"] // The names of the roles which should not be spam-filtered
-});
 
 
 client.on('ready', () => {
@@ -178,18 +166,7 @@ client.on('message', message => {
     message.channel.send(userEmbed);
   }
 
-  if (command === "botinfo"){
-    let bicon = client.user.displayAvatarURL;
-    let botembed = new Discord.RichEmbed()
-    .setTitle("Mickey")
-    .setDescription("Made and maintained by abloane#9965")
-    .setColor("#15f153")
-    .setThumbnail(bicon)
-    .addField("Bot Name", client.user.username)
-    .addField("Created On", client.user.createdAt);
-
-    message.channel.send(botembed);
-  }
+  
 	});
 
 const credentials = require("./credentials");
