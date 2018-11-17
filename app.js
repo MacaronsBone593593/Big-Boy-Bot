@@ -18,6 +18,8 @@ const youtubeAPIKey = process.env.YOUTUBE_API_KEY;
 
 let guilds = {};
 
+let money = JSON.parse(fs.readFileSync("./money.json", "utf8"));
+
 client.on('ready', () => {
     console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
     client.user.setStatus('available')
