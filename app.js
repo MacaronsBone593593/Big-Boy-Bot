@@ -18,16 +18,13 @@ const youtubeAPIKey = process.env.YOUTUBE_API_KEY;
 
 let guilds = {};
 
-client.on("guildMemberAdd", member => {
-	   const welcomeChannel = member.guild.channels.find('name', 'general');
-                if (!welcomeChannel === null) return;
-   client.channels.get(welcomeChannel.id).send("**" member.user.username + " has joined r/DisneyTVA! Please check out #welcome, #server-roles and feel free to introduce yourself over in #introduce-yourself!**")
+client.on('guildMemberAdd', member => {
+    member.guild.channels.get('483928504392613899').send('**' + member.user.username + '**, has joined the server!'); 
 });
 
-client.on("guildMemberRemove", member => {
-   const welcomeChannel = member.guild.channels.find('name', 'general');
-                if (!welcomeChannel === null) return;
-   client.channels.get(welcomeChannel.id).send("**" member.user.username + " has left r/DisneyTVA, goodbye. **")
+client.on('guildMemberRemove', member => {
+    member.guild.channels.get('483928504392613899').send('**' + member.user.username + '**, has left the server');
+    //
 });
 
 client.on('ready', () => {
