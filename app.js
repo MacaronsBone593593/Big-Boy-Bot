@@ -18,7 +18,17 @@ const youtubeAPIKey = process.env.YOUTUBE_API_KEY;
 
 let guilds = {};
 
+client.on("guildMemberAdd", member => {
+	   const welcomeChannel = member.guild.channels.find('name', 'general');
+                if (!welcomeChannel === null) return;
+   client.channels.get(welcomeChannel.id).send("**" member.user.username + " has joined r/DisneyTVA! Please check out #welcome, #server-roles and feel free to introduce yourself over in #introduce-yourself!**")
+});
 
+client.on("guildMemberRemove", member => {
+   const welcomeChannel = member.guild.channels.find('name', 'general');
+                if (!welcomeChannel === null) return;
+   client.channels.get(welcomeChannel.id).send("**" member.user.username + " has left r/DisneyTVA, goodbye. **")
+});
 
 client.on('ready', () => {
     console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
@@ -37,7 +47,6 @@ client.on("guildDelete", guild => {
   client.user.setStatus('available')
     client.user.setActivity(`with Goofy | -help`, {type: "PLAYING"});
 });
-let money = JSON.parse(fs.readFileSync("./money.json", "utf8"));
 
 client.on('message', message => {
 	if (!message.content.startsWith(prefix)) return;
