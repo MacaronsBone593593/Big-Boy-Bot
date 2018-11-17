@@ -26,13 +26,13 @@ client.on('ready', () => {
 });
 
 
-Client.on("guildMemberAdd", member => {
+client.on("guildMemberAdd", member => {
 	   const welcomeChannel = member.guild.channels.find('name', 'general');
                 if (!welcomeChannel === null) return;
    client.channels.get(welcomeChannel.id).send("**" + member.user.username + " has joined r/DisneyTVA! Please check out #welcome, #server-roles and feel free to introduce yourself over in #introduce-yourself and please enjoy your stay!**")
 });
 
-Client.on("guildMemberRemove", member => {
+client.on("guildMemberRemove", member => {
    const welcomeChannel = member.guild.channels.find('name', 'general');
                 if (!welcomeChannel === null) return;
    client.channels.get(welcomeChannel.id).send(member.user.username + " has left r/DisneyTVA, goodbye 😦...")
