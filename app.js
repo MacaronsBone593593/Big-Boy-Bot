@@ -36,7 +36,7 @@ client.on("guildMemberAdd", member => {
 client.on("guildMemberRemove", member => {
    const welcomeChannel = member.guild.channels.find('name', 'general');
                 if (!welcomeChannel === null) return;
-   client.channels.get(welcomeChannel.id).send("<@!" + member.user.id + ">" + " has left r/DisneyTVA, goodbye 😦...")
+   client.channels.get(welcomeChannel.id).send(member.user.tag + " has left r/DisneyTVA,😦 goodbye...")
 });
 
 client.on("guildCreate", guild => {
