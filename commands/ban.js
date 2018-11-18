@@ -25,7 +25,7 @@ module.exports.run = async (client, message, args) => {
     message.guild.member(bUser).ban(breason);
     message.delete();
     banchannel.send(banEmbed);
-    message.channel.send(banEmbed);
+    message.channel.send(bUser.tag + " has been exiled from r/DisneyTVA")
 
 }
 module.exports.help = {
