@@ -26,7 +26,7 @@ module.exports.run = async (client, message, args) => {
     message.bUser.ban(breason)
     console.log(`Successfully sent ban message to ${message.bUser.tag}`);
 }).catch(function(){
-   message.member.ban(breason)
+   message.bUser.ban(breason)
    console.log(`Unsuccessfully sent ban message to ${message.bUser.tag}`);
 });
     message.delete();
