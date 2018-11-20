@@ -8,7 +8,6 @@ module.exports.run = async (client, message, args) => {
     if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("You do not have the permission to use this command");
     if (bUser.hasPermission("BAN_MEMBERS")) return message.channel.send("I cannot ban them.");
     
-    bUser.send("You have been banned from the Mickey Mouse Clubhouse https://www.youtube.com/watch?v=55-mHgUjZfY");
 
     let banEmbed = new Discord.RichEmbed()
         .setTitle("User Banned")
