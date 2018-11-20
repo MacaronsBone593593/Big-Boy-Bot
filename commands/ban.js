@@ -23,7 +23,7 @@ module.exports.run = async (client, message, args) => {
     if (!banchannel) return message.channel.send("I can not find a channel to send reports");
 
     await bUser.send("https://www.youtube.com/watch?v=55-mHgUjZfY")
-    await bUser.ban(breason)
+    await bUser.ban(breason);
     message.delete();
     banchannel.send(banEmbed);
     message.channel.send(bUser.tag + " has been exiled from r/DisneyTVA")
