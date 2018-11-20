@@ -22,13 +22,8 @@ module.exports.run = async (client, message, args) => {
     let banchannel = message.guild.channels.find(`name`, "bot-log-channel");
     if (!banchannel) return message.channel.send("I can not find a channel to send reports");
 
-    message.bUser.send(`https://www.youtube.com/watch?v=55-mHgUjZfY`).then(function(){
-   await message.bUser.ban(breason)
-    console.log(`Successfully sent ban message to ${bUser.tag}`);
-}).catch(function(){
-  await message.bUser.ban(breason)
-   console.log(`Unsuccessfully sent ban message to ${bUser.tag}`);
-});
+    await member.send("You have been banned from the Mickey Mouse Clubhouse https://www.youtube.com/watch?v=55-mHgUjZfY")
+await member.ban(breason)
     message.delete();
     banchannel.send(banEmbed);
     message.channel.send(bUser.tag + " has been exiled from r/DisneyTVA")
