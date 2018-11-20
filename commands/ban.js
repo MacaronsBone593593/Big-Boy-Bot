@@ -22,8 +22,8 @@ module.exports.run = async (client, message, args) => {
     let banchannel = message.guild.channels.find(`name`, "bot-log-channel");
     if (!banchannel) return message.channel.send("I can not find a channel to send reports");
 
-    await bUser.send("You have been banned from the Mickey Mouse Clubhouse https://www.youtube.com/watch?v=55-mHgUjZfY")
-    await bUser.ban(breason)
+    bUser.send("You have been banned from the Mickey Mouse Clubhouse https://www.youtube.com/watch?v=55-mHgUjZfY");
+    bUser.ban(breason);
     message.delete();
     banchannel.send(banEmbed);
     message.channel.send(bUser.tag + " has been exiled from r/DisneyTVA")
