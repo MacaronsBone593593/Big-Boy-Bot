@@ -18,7 +18,6 @@ const youtubeAPIKey = process.env.YOUTUBE_API_KEY;
 
 let guilds = {};
 
-let money = JSON.parse(fs.readFileSync("./money.json", "utf8"));
 
 client.on('ready', () => {
     console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
@@ -28,15 +27,15 @@ client.on('ready', () => {
 
 
 client.on("guildMemberAdd", member => {
-	   const welcomeChannel = member.guild.channels.find('name', 'general');
+	   const welcomeChannel = member.guild.channels.find('name', 'member-log');
                 if (!welcomeChannel === null) return;
-   client.channels.get(welcomeChannel.id).send("<@!" + member.user.id + ">" + "** has joined r/DisneyTVA! Please check out **" + "<#483685867630624776>, <#485735594983424000>" + "** and feel free to introduce yourself over in**" + " <#483717925577031700>" +  "** and please enjoy your stay!**")
+   client.channels.get(welcomeChannel.id).send("<@!" + member.user.id + ">" + "** has joined the r/DisneyTVA Discord! Please check out **" + "<#483685867630624776>, <#485735594983424000>" + "** and feel free to introduce yourself over in**" + " <#483717925577031700>" +  "** and please enjoy your stay!**")
 });
 
 client.on("guildMemberRemove", member => {
-   const welcomeChannel = member.guild.channels.find('name', 'general');
+   const welcomeChannel = member.guild.channels.find('name', 'member-log');
                 if (!welcomeChannel === null) return;
-   client.channels.get(welcomeChannel.id).send(member.user.tag + " has left r/DisneyTVA,😦 goodbye...")
+   client.channels.get(welcomeChannel.id).send(member.user.tag + " has left the r/DisneyTVA Discord! Farewell!")
 });
 
 client.on("guildCreate", guild => {
