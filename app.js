@@ -17,7 +17,6 @@ const botToken = process.env.BOT_TOKEN;
 const youtubeAPIKey = process.env.YOUTUBE_API_KEY;
 
 let guilds = {};
-const vrole = "Talking in Voice Chat"
 
 
 client.on('ready', () => {
@@ -31,7 +30,12 @@ client.on('voiceStateUpdate',(oldMember,newMember)=>{
 	const channel=oldMember.guild.channels.find(ch=>ch.name==='voice-channel-text');
 	if(!channel)return;
 	if(oldMember.voiceChannel===undefined&&newMember.voiceChannel.name==="General"){
+		var vrole = newMember.guild.roles.find('name', 'Talking in Voice Chat');
+                newMember.addRole(vrole);
 		channel.send("<@!" + newMember.user.id + ">" + " has General voice chat, please talk here if you are cannot speak in voice-comms.");
+	}else if(newMember.voiceChannel===undefined){
+		var vrole = oldMember.guild.roles.find('name', 'Talking in Voice Chat');
+		oldMember.removeRole(vrole);
 	}
 });
 
@@ -40,7 +44,12 @@ client.on('voiceStateUpdate',(oldMember,newMember)=>{
 	const channel=oldMember.guild.channels.find(ch=>ch.name==='🎵play-music-here');
 	if(!channel)return;
 	if(oldMember.voiceChannel===undefined&&newMember.voiceChannel.name==="🎧 Music"){
+		var vrole = newMember.guild.roles.find('name', 'Listening To Music');
+                newMember.addRole(vrole);
 		channel.send("<@!" + newMember.user.id + ">" + " has joined the Music room, please use the music commands here.");
+	}else if(newMember.voiceChannel===undefined){
+		var vrole = oldMember.guild.roles.find('name', 'Listening To Music');
+		oldMember.removeRole(vrole);
 	}
 });
 
