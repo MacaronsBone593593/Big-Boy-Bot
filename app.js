@@ -32,7 +32,7 @@ client.on('voiceStateUpdate',(oldMember,newMember)=>{
 	if(oldMember.voiceChannel===undefined&&newMember.voiceChannel!==undefined){
 		channel.send("<@!" + newMember.user.id + ">" + " has joined voice-comms, please talk here if you are cannot speak in voice-comms.");
 	}else if(newMember.voiceChannel===undefined){
-		channel.send(`${oldMember} has left ${oldMember.voiceChannel}`);
+		channel.send(oldMember.user.tag + "has left voice-comms.");
 	}
 });
 
