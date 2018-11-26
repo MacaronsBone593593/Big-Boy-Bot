@@ -32,8 +32,15 @@ client.on('voiceStateUpdate',(oldMember,newMember)=>{
 	if(!channel)return;
 	if(oldMember.voiceChannel===undefined&&newMember.voiceChannel.name==="General"){
 		channel.send("<@!" + newMember.user.id + ">" + " has General voice chat, please talk here if you are cannot speak in voice-comms.");
-	}else if(newMember.voiceChannel===undefined){
-		channel.send(`${oldMember} has left ${oldMember.voiceChannel}`);
+	}
+});
+
+
+client.on('voiceStateUpdate',(oldMember,newMember)=>{
+	const channel=oldMember.guild.channels.find(ch=>ch.name==='🎵play-music-here');
+	if(!channel)return;
+	if(oldMember.voiceChannel===undefined&&newMember.voiceChannel.name==="🎧 Music"){
+		channel.send("<@!" + newMember.user.id + ">" + " has joined the Music room, please use the music commands here.");
 	}
 });
 
