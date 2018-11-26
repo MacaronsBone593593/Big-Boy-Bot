@@ -30,7 +30,7 @@ client.on('ready', () => {
 client.on('voiceStateUpdate',(oldMember,newMember)=>{
 	const channel=oldMember.guild.channels.find(ch=>ch.name==='voice-channel-text');
 	if(!channel)return;
-	if(oldMember.voiceChannel===undefined&&newMember.voiceChannel.name!=="General"){
+	if(oldMember.voiceChannel.name==="General"&&newMember.voiceChannel!==undefined){
 		channel.send("<@!" + newMember.user.id + ">" + " has General voice chat, please talk here if you are cannot speak in voice-comms.");
 	}else if(newMember.voiceChannel===undefined){
 		channel.send(`${oldMember} has left ${oldMember.voiceChannel}`);
