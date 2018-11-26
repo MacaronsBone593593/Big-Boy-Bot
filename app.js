@@ -26,6 +26,22 @@ client.on('ready', () => {
 });
 
 
+client.on('voiceStateUpdate',(oldMember,newMember)=>{
+	const channel=oldMember.guild.channels.find(ch=>ch.name==='voice-channel-text');
+	if(!channel)return;
+	if(newMember.voiceChannelID = "483685867630624778"){
+		let role = message.guild.roles.find(r => r.name === "Talking in Voice Chat");
+		newMember.addRole(role);
+		
+	}
+	if(oldMember.voiceChannel===undefined&&newMember.voiceChannel!==undefined){
+		channel.send("<@!" + newMember.user.id + ">" + " has joined voice-comms, please talk here if you are cannot speak in voice-comms.");
+	}else if(newMember.voiceChannel===undefined){
+		channel.send(`${oldMember} has left ${oldMember.voiceChannel}`);
+	}
+});
+
+
 client.on("guildMemberAdd", member => {
 	   const welcomeChannel = member.guild.channels.find('name', 'member-log');
                 if (!welcomeChannel === null) return;
