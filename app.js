@@ -30,11 +30,9 @@ client.on('ready', () => {
 client.on('voiceStateUpdate',(oldMember,newMember)=>{
 	const channel=oldMember.guild.channels.find(ch=>ch.name==='voice-channel-text');
 	if(!channel)return;
-	if(oldMember.voiceChannel===undefined&&newMember.voiceChannel!==undefined){
+	if(oldMember.voiceChannel===undefined&&newMember.voiceChannel.name!=="General"){
 		channel.send("<@!" + newMember.user.id + ">" + " has General voice chat, please talk here if you are cannot speak in voice-comms.");
-		newMember.addRole(vrole)
 	}else if(newMember.voiceChannel===undefined){
-		oldMember.removeRole(vrole)
 		channel.send(`${oldMember} has left ${oldMember.voiceChannel}`);
 	}
 });
