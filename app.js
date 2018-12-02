@@ -32,7 +32,7 @@ client.on('voiceStateUpdate',(oldMember,newMember)=>{
 	if(oldMember.voiceChannel===undefined&&newMember.voiceChannel.name==="General"){
 		var vrole = newMember.guild.roles.find('name', 'Talking in Voice Chat');
                 newMember.addRole(vrole);
-		channel.send("<@!" + newMember.user.id + ">" + " has General voice chat, please talk here if you are cannot speak in voice-comms.");
+		channel.send("<@!" + newMember.user.id + ">" + " has joined General voice chat, please talk here if you cannot speak in voice-comms.");
 	}else if(newMember.voiceChannel===undefined){
 		var vrole = oldMember.guild.roles.find('name', 'Talking in Voice Chat');
 		oldMember.removeRole(vrole);
@@ -46,7 +46,7 @@ client.on('voiceStateUpdate',(oldMember,newMember)=>{
 	if(oldMember.voiceChannel===undefined&&newMember.voiceChannel.name==="🎧 Music"){
 		var vrole = newMember.guild.roles.find('name', 'Listening To Music');
                 newMember.addRole(vrole);
-		channel.send("<@!" + newMember.user.id + ">" + " has joined the Music room, please use the music commands here.");
+		channel.send("<@!" + newMember.user.id + ">" + " has joined the Music channel, please use the music commands here.");
 	}else if(newMember.voiceChannel===undefined){
 		var vrole = oldMember.guild.roles.find('name', 'Listening To Music');
 		oldMember.removeRole(vrole);
@@ -55,13 +55,13 @@ client.on('voiceStateUpdate',(oldMember,newMember)=>{
 
 
 client.on("guildMemberAdd", member => {
-	   const welcomeChannel = member.guild.channels.find('name', 'member-log');
+	   const welcomeChannel = member.guild.channels.find('name', 'welcome');
                 if (!welcomeChannel === null) return;
    client.channels.get(welcomeChannel.id).send("<@!" + member.user.id + ">" + "** has joined the r/DisneyTVA Discord! Please check out **" + "<#483685867630624776>, <#485735594983424000>" + "** and feel free to introduce yourself over in**" + " <#483717925577031700>" +  "** and please enjoy your stay!**")
 });
 
 client.on("guildMemberRemove", member => {
-   const welcomeChannel = member.guild.channels.find('name', 'member-log');
+   const welcomeChannel = member.guild.channels.find('name', 'welcome');
                 if (!welcomeChannel === null) return;
    client.channels.get(welcomeChannel.id).send(member.user.tag + " has left the r/DisneyTVA Discord! Farewell!")
 });
