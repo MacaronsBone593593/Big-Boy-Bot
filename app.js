@@ -29,7 +29,7 @@ client.on('ready', () => {
 client.on('voiceStateUpdate',(oldMember,newMember)=>{
 	const channel=oldMember.guild.channels.find(ch=>ch.name==='voice-channel-text');
 	if(!channel)return;
-	if(oldMember.voiceChannel===undefined&&newMember.voiceChannel.name==="General"){
+	if(oldMember.voiceChannel===undefined&&newMember.voiceChannel.name==="General Chat"){
 		var vrole = newMember.guild.roles.find('name', 'Talking in Voice Chat');
                 newMember.addRole(vrole);
 		channel.send("<@!" + newMember.user.id + ">" + " has joined General voice chat, please talk here if you cannot speak in voice-comms.");
